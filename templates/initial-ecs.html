@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+{% block selected01 %}class=""{% endblock %}
+{% block selected02 %}class="active"{% endblock %}
+{% block main %}
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">初始化部署ECS</h3>
+        </div>
+        <div class="panel-body">
+
+
+            <form class="form-horizontal" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">运行如下命令执行脚本,多个机器的ip以空格隔开</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="ip_address" class="form-control" placeholder="192.168.1.1   192.168.1.2   192.16.1.3">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-10">
+                        <button type="submit" class="btn btn-default">开始部署</button>
+                    </div>
+                </div>
+
+                <label class="col-sm-2 control-label">运维服务器的日志</label>
+                <div class="form-group">
+                   <textarea class="form-control" rows="10">请停在页面等待日志生成
+                       {{ yunwei_log }}</textarea>
+                </div>
+
+                <label class="col-sm-2 control-label">目标服务器的日志</label>
+                <div class="form-group">
+                   <textarea class="form-control" rows="10">请停在页面等待日志生成
+                       {{ target_machine_log }}</textarea>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}
